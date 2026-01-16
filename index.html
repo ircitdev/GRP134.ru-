@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Грузовая переправа Камышин - Николаевск | Официальный сайт</title>
+    <meta name="description" content="Безопасная паромная переправа через Волгу: Камышин – Николаевск. Перевозка легковых и грузовых авто, спецтехники. Актуальное расписание и тарифы.">
+    <meta name="keywords" content="паром камышин николаевск, грузовая переправа камышин, расписание парома камышин, тарифы паром волга, перевозка авто камышин">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        nautical: '#122D54',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --fluid-h2: clamp(1.75rem, 4vw, 3rem);
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-scaleIn {
+            animation: scaleIn 0.4s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+        }
+
+        .hero-appear {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        /* Background Pattern Animations */
+        @keyframes wave-move {
+            from { background-position: 0 0; }
+            to { background-position: 100px 0; }
+        }
+
+        .animate-wave-move {
+            animation: wave-move 4s linear infinite;
+        }
+
+        @keyframes seagull-slow {
+            from { background-position: 0 0; }
+            to { background-position: 300px 240px; }
+        }
+
+        .animate-seagull-slow {
+            animation: seagull-slow 30s linear infinite;
+        }
+
+        /* Fluid topography adjustments for desktop */
+        @media (min-width: 1024px) {
+            :root {
+                --fluid-h2: 2.75rem; /* More "normal" size for desktop headers */
+            }
+        }
+    </style>
+    
+    <script type="importmap">
+    {
+      "imports": {
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3"
+      }
+    }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-[#0a0f1a]">
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+    <script>
+        // Theme initialization
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>

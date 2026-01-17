@@ -10,14 +10,15 @@ import {
   IconHandshake, 
   IconClock,
   IconAlert,
-  IconPhone
+  IconPhone,
+  IconArrowRight
 } from '../components/Icons';
 
 const Schedule: React.FC = () => {
   return (
     <div className="py-16 container mx-auto px-4 animate-fadeIn transition-colors duration-300">
       <header className="text-center mb-12">
-        <h1 className="text-[var(--fluid-h2)] font-bold text-nautical dark:text-white mb-4 leading-tight tracking-tight">Расписание и тарифы 2025-2026</h1>
+        <h1 className="text-[var(--fluid-h2)] font-black text-nautical dark:text-white mb-4 leading-tight tracking-tight">Расписание и тарифы 2025-2026</h1>
         <div className="w-24 h-1.5 bg-blue-500 mx-auto rounded-full"></div>
         
         {NAVIGATION_CLOSED && (
@@ -42,9 +43,9 @@ const Schedule: React.FC = () => {
               <div className="bg-white/20 p-5 rounded-2xl">
                  <IconClock className="w-10 h-10" />
               </div>
-              <div>
+              <div className="text-center md:text-left">
                  <h3 className="text-xl font-black mb-2 uppercase tracking-wide">Важная информация</h3>
-                 <p className="text-lg opacity-90 leading-relaxed font-medium">
+                 <p className="text-base md:text-lg opacity-90 leading-relaxed font-medium">
                     Работа переправы напрямую зависит от погодных условий, силы ветра и ледовой обстановки на Волге. Для уточнения возможности рейса свяжитесь с диспетчером.
                  </p>
               </div>
@@ -61,13 +62,14 @@ const Schedule: React.FC = () => {
               <IconList className="w-7 h-7 mr-4 text-blue-400" />
               Стоимость перевозки
             </h2>
-            <span className="text-sm bg-blue-800/50 px-5 py-2 rounded-full border border-blue-700 font-bold flex items-center whitespace-nowrap uppercase tracking-widest">
-              <IconTag className="w-4 h-4 mr-2" /> Прейскурант ГРП
-            </span>
+            <div className="flex items-center space-x-2 text-xs bg-blue-800/50 px-5 py-2 rounded-full border border-blue-700 font-bold uppercase tracking-widest">
+              <IconTag className="w-4 h-4 text-blue-400" />
+              <span>Прейскурант ГРП</span>
+            </div>
           </div>
 
-          {/* Desktop Table View */}
-          <div className="hidden md:block overflow-x-auto">
+          {/* Desktop View: Table */}
+          <div className="hidden md:block w-full overflow-x-auto scrollbar-hide">
              <table className="w-full text-left border-collapse">
                <thead className="bg-gray-50 dark:bg-gray-900/50 border-b border-gray-100 dark:border-white/5">
                  <tr>
@@ -77,13 +79,11 @@ const Schedule: React.FC = () => {
                </thead>
                <tbody className="divide-y divide-gray-100 dark:divide-white/5">
                  {PRICING.map((item, idx) => (
-                   <ScrollReveal 
+                   <tr 
                     key={idx} 
-                    as="tr" 
-                    className="reveal-light hover:bg-blue-50/50 dark:hover:bg-white/5 transition-colors group"
-                    style={{ transitionDelay: `${(idx % 8) * 40}ms` }}
+                    className="hover:bg-blue-50/50 dark:hover:bg-white/5 transition-colors group"
                    >
-                     <td className="px-8 py-5 text-gray-800 dark:text-gray-200 font-bold text-lg">
+                     <td className="px-8 py-5 text-gray-800 dark:text-gray-200 font-bold text-lg leading-snug">
                        {item.category}
                      </td>
                      <td className="px-8 py-5 text-right">
@@ -95,46 +95,43 @@ const Schedule: React.FC = () => {
                          {item.price}
                        </span>
                      </td>
-                   </ScrollReveal>
+                   </tr>
                  ))}
                </tbody>
              </table>
           </div>
 
-          {/* Mobile List View */}
+          {/* Mobile View: Card List */}
           <div className="md:hidden divide-y divide-gray-100 dark:divide-white/5">
             {PRICING.map((item, idx) => (
-              <ScrollReveal 
-                key={idx} 
-                className="reveal-light p-6 flex flex-col hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
-                style={{ transitionDelay: `${(idx % 6) * 50}ms` }}
-              >
-                <div className="mb-4">
-                  <span className="text-[9px] font-black text-blue-500 uppercase tracking-[0.3em] mb-2 block">Тип транспорта</span>
-                  <h3 className="text-gray-800 dark:text-gray-100 font-black leading-snug text-lg">{item.category}</h3>
+              <div key={idx} className="p-6 bg-white dark:bg-transparent transition-colors">
+                <div className="flex flex-col gap-4">
+                  <div className="text-gray-800 dark:text-gray-100 font-bold text-base leading-snug">
+                    {item.category}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest">Стоимость:</span>
+                    <span className={`inline-block px-4 py-1.5 rounded-xl font-black text-base ${
+                      item.price === 'БЕСПЛАТНО' 
+                      ? 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20' 
+                      : 'text-nautical dark:text-white bg-blue-50 dark:bg-white/10'
+                    }`}>
+                      {item.price}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-50 dark:border-white/5">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Стоимость</span>
-                  <span className={`px-5 py-2.5 rounded-xl font-black text-base ${
-                    item.price === 'БЕСПЛАТНО' 
-                    ? 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20' 
-                    : 'text-nautical dark:text-white bg-gray-100 dark:bg-gray-900/50 shadow-sm'
-                  }`}>
-                    {item.price}
-                  </span>
-                </div>
-              </ScrollReveal>
+              </div>
             ))}
           </div>
 
-          <div className="p-8 md:p-10 bg-gray-50 dark:bg-gray-900/30">
+          <div className="p-6 md:p-10 bg-gray-50 dark:bg-gray-900/30">
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white dark:bg-gray-800/60 rounded-[2rem] p-7 shadow-sm border border-gray-100 dark:border-white/5">
                   <h3 className="font-black text-nautical dark:text-white mb-3 flex items-center text-lg uppercase tracking-tight">
                     <IconInfo className="w-6 h-6 mr-3 text-blue-500 flex-shrink-0" />
                     Для пассажиров
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
                     Пассажиры в автотранспорте перевозятся бесплатно. Для пеших пассажиров в Камышине действует фиксированный тариф.
                   </p>
                 </div>
@@ -143,7 +140,7 @@ const Schedule: React.FC = () => {
                     <IconHandshake className="w-6 h-6 mr-3 text-green-500 flex-shrink-0" />
                     Корпоративные услуги
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
                     Предлагаем специальные условия для регулярных перевозок грузов и спецтехники. Обращайтесь к диспетчеру для заключения договора.
                   </p>
                 </div>
@@ -160,8 +157,8 @@ const Schedule: React.FC = () => {
             </h2>
           </div>
 
-          <div className="hidden md:block overflow-x-auto">
-            <table className="w-full text-left">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full text-left min-w-[500px] md:min-w-full">
               <thead>
                 <tr className="bg-gray-50 dark:bg-gray-900/50 text-gray-500 dark:text-gray-400 text-[10px] font-black uppercase tracking-[0.2em]">
                   <th className="px-8 py-5">Время</th>
@@ -179,24 +176,6 @@ const Schedule: React.FC = () => {
                 ))}
               </tbody>
             </table>
-          </div>
-
-          <div className="md:hidden divide-y divide-gray-100 dark:divide-white/5">
-            {SCHEDULE.map((item, idx) => (
-              <div key={idx} className="p-7 flex items-center hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-                <div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0 shadow-sm">
-                  <span className="font-black text-blue-600 dark:text-blue-400 text-xl">{item.departure}</span>
-                </div>
-                <div className="min-w-0">
-                  <p className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-2">Маршрут рейса</p>
-                  <div className="flex items-center text-gray-800 dark:text-gray-100 font-black text-lg">
-                    <span className="truncate">{item.from}</span>
-                    <IconShip className="w-5 h-5 mx-3 text-gray-300" />
-                    <span className="truncate">{item.to}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
           
           <div className="p-6 bg-gray-100 dark:bg-gray-900/50 text-center">

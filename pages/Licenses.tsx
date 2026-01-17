@@ -26,7 +26,7 @@ const Licenses: React.FC = () => {
   return (
     <div className="py-16 md:py-24 container mx-auto px-4 animate-fadeIn">
       <div className="text-center mb-16">
-        <h1 className="text-[var(--fluid-h2)] font-bold text-nautical mb-4 leading-tight tracking-tight">Лицензии на речные перевозки</h1>
+        <h1 className="text-[var(--fluid-h2)] font-bold text-nautical dark:text-white mb-4 leading-tight tracking-tight">Лицензии на речные перевозки</h1>
         <div className="w-24 h-1.5 bg-blue-500 mx-auto rounded-full"></div>
         <p className="mt-6 text-gray-600 max-w-2xl mx-auto font-medium text-lg">
           Все виды деятельности ООО «Грузовая переправа» лицензированы в соответствии с законодательством Российской Федерации.
@@ -44,6 +44,8 @@ const Licenses: React.FC = () => {
                 <img 
                   src={lic.image} 
                   alt={`Лицензия ООО Грузовая переправа - ${lic.subtitle}`} 
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">

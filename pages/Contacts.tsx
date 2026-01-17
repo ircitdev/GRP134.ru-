@@ -11,7 +11,8 @@ import {
   IconArrowLeft, 
   IconSend, 
   IconAlert, 
-  IconShield 
+  IconShield,
+  LoadingSpinner 
 } from '../components/Icons';
 
 const Contacts: React.FC = () => {
@@ -253,8 +254,15 @@ const Contacts: React.FC = () => {
                     </div>
                   )}
 
-                  <button type="submit" disabled={isLoading} className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl shadow-xl transition-all uppercase tracking-[0.2em] text-xs flex items-center justify-center group active:scale-95 disabled:opacity-50">
-                    {isLoading ? "Обработка..." : "Отправить сообщение"}
+                  <button type="submit" disabled={isLoading} className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl shadow-xl transition-all uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 group active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed">
+                    {isLoading ? (
+                      <>
+                        <LoadingSpinner className="w-4 h-4" />
+                        <span>Обработка...</span>
+                      </>
+                    ) : (
+                      "Отправить сообщение"
+                    )}
                   </button>
                   
                   <div className="flex items-center justify-center gap-2 opacity-40">

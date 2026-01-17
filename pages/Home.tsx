@@ -83,7 +83,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           className="absolute inset-0 w-full h-full will-change-transform"
           style={{ transform: `translateY(${bgTranslate}px)` }}
         >
-          {/* Fallback Image */}
+          {/* Fallback Image - LCP Candidate */}
           <picture className="absolute inset-0 w-full h-full">
             <source 
               media="(max-width: 767px)" 
@@ -93,6 +93,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               src="https://storage.googleapis.com/uspeshnyy-projects/smit/grp134.ru/herosection.jpg" 
               alt="Грузовая паромная переправа через Волгу в Камышине" 
               className="w-full h-full object-cover scale-110"
+              fetchPriority="high"
             />
           </picture>
           
@@ -163,7 +164,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             </div>
             
             <h1 
-              className={`hero-appear text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white mb-8 tracking-tighter drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] leading-[0.95] md:leading-[1.1] md:whitespace-nowrap ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`hero-appear text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-8 tracking-tighter drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] leading-[1.1] md:whitespace-nowrap ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: '600ms' }}
             >
               Волжский <br className="md:hidden" /> Паром
@@ -263,7 +264,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <ScrollReveal className="order-2 lg:order-1">
             <span className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-[0.4em] text-xs mb-6 block">Надежный флот ООО «Грузовая переправа»</span>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-nautical dark:text-white mb-12 tracking-tighter leading-none">Наш Флот</h2>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-nautical dark:text-white mb-12 tracking-tighter leading-none">Наш Флот</h2>
             <div className="space-y-12">
               <div className="flex group">
                 <div className="flex-shrink-0 mt-2">
@@ -289,7 +290,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform">
                  <IconShip className="w-32 h-32" />
               </div>
-              <p className="text-gray-900 dark:text-gray-100 font-bold italic text-base md:text-2xl leading-relaxed relative z-10">
+              <p className="text-gray-900 dark:text-gray-100 font-bold italic text-base md:text-xl leading-relaxed relative z-10">
                 "Каждое судно управляется командой профессионалов с многолетним опытом речной навигации."
               </p>
             </div>
@@ -304,22 +305,20 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </ScrollReveal>
           
           <ScrollReveal className="order-1 lg:order-2 grid grid-cols-1 lg:grid-cols-2 gap-8 h-fit">
-            {/* Mobile: Single horizontal image */}
             <div className="lg:hidden relative overflow-hidden rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] h-[250px]">
-              <img src="https://storage.googleapis.com/uspeshnyy-projects/smit/grp134.ru/main3.jpg" alt="Паромная переправа" loading="lazy" className="w-full h-full object-cover" />
+              <img src="https://storage.googleapis.com/uspeshnyy-projects/smit/grp134.ru/main4.jpg" alt="Паромная переправа" loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </div>
 
-            {/* Desktop: Grid layout */}
             <div className="hidden lg:block relative overflow-hidden rounded-[3.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] h-[550px]">
-              <img src="https://storage.googleapis.com/uspeshnyy-projects/smit/grp134.ru/main1.jpg" alt="Паром Марш Славянки" loading="lazy" className="w-full h-full object-cover hover:scale-110 transition-transform duration-[1.5s]" />
+              <img src="https://storage.googleapis.com/uspeshnyy-projects/smit/grp134.ru/main1.jpg" alt="Паром Марш Славянки" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-110 transition-transform duration-[1.5s]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="hidden lg:grid grid-rows-2 gap-8">
                <div className="relative overflow-hidden rounded-[3rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)]">
-                 <img src="https://storage.googleapis.com/uspeshnyy-projects/smit/grp134.ru/main2.jpg" alt="Погрузка транспорта" loading="lazy" className="w-full h-full object-cover hover:scale-110 transition-transform duration-[1.5s]" />
+                 <img src="https://storage.googleapis.com/uspeshnyy-projects/smit/grp134.ru/main2.jpg" alt="Погрузка транспорта" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-110 transition-transform duration-[1.5s]" />
                </div>
                <div className="relative overflow-hidden rounded-[3rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)]">
-                 <img src="https://storage.googleapis.com/uspeshnyy-projects/smit/grp134.ru/main3.jpg" alt="Паромная переправа" loading="lazy" className="w-full h-full object-cover hover:scale-110 transition-transform duration-[1.5s]" />
+                 <img src="https://storage.googleapis.com/uspeshnyy-projects/smit/grp134.ru/main3.jpg" alt="Паромная переправа" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-110 transition-transform duration-[1.5s]" />
                </div>
             </div>
           </ScrollReveal>
@@ -328,13 +327,12 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       {/* Map Section with Background Gradient */}
       <section className="py-24 md:py-40 bg-gradient-to-br from-gray-50 via-blue-50/50 to-gray-100 dark:from-[#0d1526] dark:via-[#111d33] dark:to-[#0a0f1a] transition-colors relative overflow-hidden">
-        {/* Decorative background blur */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/5 dark:bg-blue-400/5 blur-[120px] -z-10 rounded-full"></div>
         
         <div className="container mx-auto px-6">
           <ScrollReveal className="text-center mb-16 lg:mb-24">
             <span className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-[0.4em] text-xs mb-6 block">Локация причалов</span>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-nautical dark:text-white mb-8 tracking-tight leading-tight">Схема проезда</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-nautical dark:text-white mb-8 tracking-tight leading-tight">Схема проезда</h2>
             <div className="w-24 h-2 bg-blue-600 mx-auto rounded-full shadow-lg shadow-blue-600/20 mb-8"></div>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-medium text-lg md:text-xl">
               Места швартовки парома оборудованы удобными подъездами для всех видов транспорта.
@@ -342,7 +340,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left Column: Points of Departure and Button */}
             <div className="space-y-8">
               <ScrollReveal stagger={1}>
                 <div className="bg-white/80 dark:bg-gray-800/40 backdrop-blur-sm p-10 rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)] dark:shadow-none border border-white dark:border-white/5 group hover:shadow-[0_30px_70px_-20px_rgba(0,0,0,0.12)] transition-all duration-500">
@@ -389,16 +386,15 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               </ScrollReveal>
             </div>
 
-            {/* Right Column: Interactive Map */}
             <ScrollReveal stagger={4} className="h-full">
-              <div className="relative overflow-hidden rounded-[3.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] bg-gray-200 dark:bg-gray-800 h-[500px] lg:h-[650px] group border border-white dark:border-white/5">
+              <div className="relative overflow-hidden rounded-[3.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] bg-gray-200 dark:bg-gray-800 h-[450px] lg:h-[650px] group border border-white dark:border-white/5">
                 <iframe 
                   src="https://yandex.ru/map-widget/v1/-/CKuAR8yl" 
                   width="100%" 
                   height="100%" 
                   frameBorder="0" 
                   allowFullScreen={true} 
-                  className="relative z-0 filter dark:invert dark:hue-rotate-180 dark:brightness-75 transition-all duration-700 md:scale-100 scale-[1.15] origin-center"
+                  className="relative z-0 filter dark:invert dark:hue-rotate-180 dark:brightness-75 transition-all duration-700 md:scale-100 scale-[0.9] origin-center"
                   title="Схема проезда на главной"
                 ></iframe>
                 <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.1)] rounded-[3.5rem]"></div>
@@ -414,7 +410,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         
         <div className="container mx-auto px-6 text-center relative z-10">
           <ScrollReveal>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-[9rem] font-black text-white mb-12 tracking-tight drop-shadow-2xl leading-[0.85]">Переправа<br />Камышин — Николаевск</h2>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-12 tracking-tight drop-shadow-2xl leading-[1.1]">Переправа<br />Камышин — Николаевск</h2>
             <p className="max-w-3xl mx-auto text-blue-100/80 mb-20 text-xl md:text-3xl font-medium leading-relaxed">
               Планируете поездку? Мы подготовили подробную информацию о тарифах и схеме проезда.
             </p>
@@ -442,7 +438,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       <section className="py-28 bg-white dark:bg-[#0a0f1a] transition-colors">
         <div className="container mx-auto px-6">
           <ScrollReveal className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-nautical dark:text-white mb-8 tracking-tight leading-tight">Лицензии и сертификаты</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-nautical dark:text-white mb-8 tracking-tight leading-tight">Лицензии и сертификаты</h2>
             <div className="w-24 h-2 bg-blue-600 mx-auto rounded-full shadow-lg shadow-blue-600/20"></div>
           </ScrollReveal>
 
@@ -454,7 +450,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                   onClick={() => setSelectedLicense(lic.image)}
                 >
                   <div className="relative aspect-[1/1.4] w-64 overflow-hidden rounded-[2rem] shadow-2xl mb-10 bg-gray-200 dark:bg-gray-700">
-                    <img src={lic.image} alt={`${lic.title} ООО Грузовая переправа`} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <img src={lic.image} alt={`${lic.title} ООО Грузовая переправа`} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-nautical/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-md">
                       <div className="bg-white/20 p-5 rounded-full backdrop-blur-xl border border-white/30">
                         <IconZoom className="w-10 h-10 text-white" />
@@ -475,7 +471,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="container mx-auto px-6 max-w-4xl">
           <ScrollReveal className="text-center mb-20">
             <span className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-[0.4em] text-xs mb-6 block">Частые вопросы</span>
-            <h2 className="text-4xl md:text-6xl font-black text-nautical dark:text-white mb-8 tracking-tight leading-tight">Полезно знать</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-nautical dark:text-white mb-8 tracking-tight leading-tight">Полезно знать</h2>
             <div className="w-24 h-2 bg-blue-600 mx-auto rounded-full shadow-lg shadow-blue-600/20"></div>
           </ScrollReveal>
 

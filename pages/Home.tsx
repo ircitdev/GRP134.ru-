@@ -164,7 +164,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             </div>
             
             <h1 
-              className={`hero-appear text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-8 tracking-tighter drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] leading-[1.1] md:whitespace-nowrap ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`hero-appear text-6xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-black text-white mb-8 tracking-tighter drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] leading-none md:whitespace-nowrap ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: '600ms' }}
             >
               Волжский <br className="md:hidden" /> Паром
@@ -387,14 +387,14 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             </div>
 
             <ScrollReveal stagger={4} className="h-full">
-              <div className="relative overflow-hidden rounded-[3.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] bg-gray-200 dark:bg-gray-800 h-[450px] lg:h-[650px] group border border-white dark:border-white/5">
+              <div className="relative overflow-hidden rounded-[3.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] bg-gray-200 dark:bg-gray-800 w-full aspect-square md:aspect-video lg:h-[650px] group border border-white dark:border-white/5">
                 <iframe 
                   src="https://yandex.ru/map-widget/v1/-/CKuAR8yl" 
                   width="100%" 
                   height="100%" 
                   frameBorder="0" 
                   allowFullScreen={true} 
-                  className="relative z-0 filter dark:invert dark:hue-rotate-180 dark:brightness-75 transition-all duration-700 md:scale-100 scale-[0.9] origin-center"
+                  className="absolute inset-0 w-full h-full filter dark:invert dark:hue-rotate-180 dark:brightness-75 transition-all duration-700"
                   title="Схема проезда на главной"
                 ></iframe>
                 <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.1)] rounded-[3.5rem]"></div>

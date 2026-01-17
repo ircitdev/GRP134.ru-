@@ -34,7 +34,7 @@ const MapPage: React.FC = () => {
              Открыть в Яндекс.Картах
            </a>
         </div>
-        <div className="relative h-[400px] md:h-[600px] bg-gray-100 dark:bg-gray-900 overflow-hidden">
+        <div className="relative w-full aspect-square sm:aspect-video lg:h-[650px] bg-gray-100 dark:bg-gray-900 overflow-hidden">
           {isIframeLoading && (
             <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-gray-100/80 dark:bg-gray-900/80 backdrop-blur-sm animate-fadeIn">
               <LoadingSpinner className="w-10 h-10 text-nautical dark:text-blue-400 mb-4" />
@@ -47,7 +47,7 @@ const MapPage: React.FC = () => {
             height="100%" 
             frameBorder="0" 
             allowFullScreen={true} 
-            className={`relative md:scale-100 scale-[0.9] origin-center transition-opacity duration-700 ${isIframeLoading ? 'opacity-0' : 'opacity-100'} filter dark:invert dark:hue-rotate-180 dark:brightness-75`}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${isIframeLoading ? 'opacity-0' : 'opacity-100'} filter dark:invert dark:hue-rotate-180 dark:brightness-75`}
             title="Схема проезда"
             onLoad={() => setIsIframeLoading(false)}
           ></iframe>

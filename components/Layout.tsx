@@ -12,7 +12,8 @@ import {
   IconMail,
   IconSun,
   IconMoon,
-  IconHome
+  IconHome,
+  IconArrowRight
 } from './Icons';
 
 interface LayoutProps {
@@ -234,6 +235,15 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage, onPageChange }) 
                 <li className="flex items-start">
                   <IconMail className="mt-1 mr-4 text-blue-500 w-5 h-5 shrink-0" />
                   <a href="mailto:info@grp34.ru" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 transition-colors font-bold">info@grp34.ru</a>
+                </li>
+                <li className="pt-4">
+                  <button 
+                    onClick={() => onPageChange('contacts')}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20 active:scale-95 flex items-center group"
+                  >
+                    Задать вопрос
+                    <IconArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </li>
               </ul>
             </div>

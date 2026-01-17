@@ -10,13 +10,17 @@ import MapPage from './pages/Map';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfCarriage from './pages/TermsOfCarriage';
 import CookieBanner from './components/CookieBanner';
+import Preloader from './components/Preloader';
 import { PageType } from './types';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
 
   // SEO & Scroll management
   useEffect(() => {
+    if (isInitialLoading) return;
+
     window.scrollTo(0, 0);
     
     // Dynamic titles for SEO
@@ -62,7 +66,7 @@ const App: React.FC = () => {
     if (metaDesc) {
       metaDesc.setAttribute('content', description);
     }
-  }, [currentPage]);
+  }, [currentPage, isInitialLoading]);
 
   const renderPage = () => {
     switch (currentPage) {
@@ -88,10 +92,18 @@ const App: React.FC = () => {
   };
 
   return (
-    <Layout currentPage={currentPage} onPageChange={setCurrentPage}>
-      {renderPage()}
-      <CookieBanner />
-    </Layout>
+    <>
+      {isInitialLoading && (
+        <Preloader onComplete={() => setIsInitialLoading(false)} />
+      )}
+      
+      {!isInitialLoading && (
+        <Layout currentPage={currentPage} onPageChange={setCurrentPage}>
+          {renderPage()}
+          <CookieBanner />
+        </Layout>
+      )}
+    </>
   );
 };
 
